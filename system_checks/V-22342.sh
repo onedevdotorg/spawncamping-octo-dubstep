@@ -1,23 +1,23 @@
 #!/bin/bash
 #
-# Perform check for V-22341
+# Perform check for V-22342
 #
 # last_updated: James Montgomery 02/01/2014
 #
 
 
 finding_result="Not Reviewed"
-readonly finding_vulnerability_id="V-22341"
-readonly finding_title="The /etc/gshadow file must be owned by root."
+readonly finding_vulnerability_id="V-22342"
+readonly finding_title="The /etc/gshadow file must be group-owned by root."
 readonly finding_category="CAT II"
 readonly finding_group="FUTURE_STUB"
 
 evaluate() {
-  is_owned_by_root=$(ls -l /etc/gshadow | awk '{ print $3 }')
+  is_owned_by_root=$(ls -l /etc/gshadow | awk '{ print $4 }')
   if [ $is_owned_by_root != "root" ]; then
     finding_result="Open"
     if [ ${FIX} = "true" ]; then
-      $(chown root /etc/gshadow)
+      $(chgrp root /etc/gshadow)
       finding_result="Fixed"
     fi
   else

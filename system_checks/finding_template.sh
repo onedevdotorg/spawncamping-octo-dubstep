@@ -10,7 +10,7 @@
 # last_updated: James Montgomery 02/01/2014
 #
 
-RESULT="null"
+RESULT="Not Reviewed"
 
 
 evaluate() {

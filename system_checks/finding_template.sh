@@ -1,29 +1,27 @@
 #!/bin/bash
 #
-# Perform check for V#######
+# Perform check for V-
 #
-# finding_vulnerability_id: V000000
-# finding_title:  short name
-# finding_category: CAT X
-# finding_group: FUTURE_STUB
-# 
 # last_updated: James Montgomery 02/01/2014
 #
 
-RESULT="Not Reviewed"
 
+finding_result="Not Reviewed"
+readonly finding_vulnerability_id="V-"
+readonly finding_title=""
+readonly finding_category="CAT "
+readonly finding_group="FUTURE_STUB"
 
 evaluate() {
-  RESULT="OPEN"
-  echo "In evaluate() and here is the result: $RESULT"
+  echo "hello world!"  
 } 
 
 
 if [[ $BASH_SOURCE != $0 ]]; then
   evaluate 
-  echo $RESULT >> ../results_file
+  echo "${finding_vulnerablity_id},${finding_result}" >> ../results_file.csv
 else
   evaluate
-  echo $RESULT
+  echo "${finding_vulnerability_id}: ${finding_result}"
 fi
  
